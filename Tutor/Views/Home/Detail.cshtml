@@ -1,0 +1,60 @@
+﻿@model New_Tutor.Models.ViewModel.HomeDetail
+@{
+    ViewData["Title"] = "Detail";
+}
+<head>
+    <link href="~/Content/caseDetail.css" rel="stylesheet" />
+</head>
+<div class="caseTitle">案件資訊</div>
+<div class="caseDetail">
+    <div class="subject">
+        <div class="title">需求科目</div>
+        <div class="Detail">@Model.QuestionnaireData.subject</div>
+    </div>
+    <div class="pay">
+        <div class="title">案件薪資</div>
+        <div class="Detail">@Model.QuestionnaireData.budget</div>
+    </div>
+    <div class="grade">
+        <div class="title">年級</div>
+        <div class="Detail">@Model.QuestionnaireData.grade_Type@Model.QuestionnaireData.grade</div>
+    </div>
+    <div class="gender">
+        <div class="title">老師性別</div>
+        <div class="Detail">@Model.QuestionnaireData.gender</div>
+    </div>
+    <div class="classTime">
+        <div class="title">可上課時段</div>
+        <div class="Detail">@Model.QuestionnaireData.Class_time</div>
+    </div>
+    <div class="frequence">
+        <div class="title">上課頻率</div>
+        <div class="Detail">@Model.QuestionnaireData.frequency.Substring(1)</div>
+    </div>
+    <div class="address">
+        <div class="title">地區</div>
+        <div class="Detail">@Model.QuestionnaireData.Address</div>
+    </div>
+    <div class="addressMamo">
+        <div class="title">交通方式</div>
+        <div class="Detail">@Model.QuestionnaireData.Address_mamo</div>
+    </div>
+    <div class="mamo">
+        <div class="title">備註事項</div>
+        <div class="Detail">@Model.QuestionnaireData.mamo</div>
+    </div>
+</div>
+<div class="connectionTitle">聯絡方式</div>
+<div class="connectionDetail">
+    <div class="phone">
+        <div class="title">電話</div>
+        <div class="Detail">@Model.QuestionnaireData.Phone</div>
+    </div>
+    <div class="email">
+        <div class="title">電子信箱</div>
+        <div class="Detail">@Model.QuestionnaireData.Email</div>
+    </div>
+</div>
+<form action="@Url.Action("Index", "Home")">
+    <button type="submit">返回列表</button>
+</form>

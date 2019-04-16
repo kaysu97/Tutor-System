@@ -1,0 +1,307 @@
+﻿@model New_Tutor.Models.ViewModel.ParentsIndex
+@{
+    ViewBag.Title = "Home Page";
+}
+<style>
+    .subject_class {
+        border-color: #F5AC00;
+        background-color: rgb(221,221,221);
+    }
+
+    .grade_class {
+        border-color: #F5AC00;
+        background-color: rgb(221,221,221);
+    }
+
+    .Salary_class {
+        border-color: #F5AC00;
+        background-color: rgb(221,221,221);
+    }
+
+    .gender_class {
+        border-color: #F5AC00;
+        background-color: rgb(221,221,221);
+    }
+</style>
+<script>
+    function indexFormSubmit(school) {
+        $("#school").val(document.getElementById("School").value);
+        document.getElementById("indexForm").submit();
+    }
+</script>
+<head>
+    <link href="~/Content/filter.css" rel="stylesheet" />
+    <link href="~/Content/detail.css" rel="stylesheet" />
+</head>
+<!-- Button trigger modal -->
+<button id="filterButton" class="filter" data-toggle="modal" data-target="#filterModal" style="z-index: 2;">
+    <h2>
+        篩選條件<svg xmlns="http://www.w3.org/2000/svg" width="12" height="15" viewBox="0 0 12 7.41"><path id="ic_chevron_right_24px" d="M10,6,8.59,7.41,13.17,12,8.59,16.59,10,18l6-6Z" transform="translate(18 -6.5) rotate(90)" fill="#707070" /></svg>
+    </h2>
+</button>
+<!-- Modal -->
+<div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">篩選條件</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <label>大學</label>
+                    @*<button type="button" class="btn btn-link" onclick="Clear('school')">清除條件</button>*@
+                    <br />
+                    <select name="school" id="School" class="form-control" required>
+                        <option disabled selected value="">---尚未選擇---</option>
+                        <option value='國立政治大學'>國立政治大學</option>
+                        <option value='國立清華大學'>國立清華大學</option>
+                        <option value='國立臺灣大學'>國立臺灣大學</option>
+                        <option value='國立臺灣師範大學'>國立臺灣師範大學</option>
+                        <option value='國立成功大學'>國立成功大學</option>
+                        <option value='國立中興大學'>國立中興大學</option>
+                        <option value='國立交通大學'>國立交通大學</option>
+                        <option value='國立中央大學'>國立中央大學</option>
+                        <option value='國立中山大學'>國立中山大學</option>
+                        <option value='國立臺灣海洋大學'>國立臺灣海洋大學</option>
+                        <option value='國立中正大學'>國立中正大學</option>
+                        <option value='國立高雄師範大學'>國立高雄師範大學</option>
+                        <option value='國立彰化師範大學'>國立彰化師範大學</option>
+                        <option value='國立陽明大學'>國立陽明大學</option>
+                        <option value='國立臺北大學'>國立臺北大學</option>
+                        <option value='國立嘉義大學'>國立嘉義大學</option>
+                        <option value='國立高雄大學'>國立高雄大學</option>
+                        <option value='國立東華大學'>國立東華大學</option>
+                        <option value='國立暨南國際大學'>國立暨南國際大學</option>
+                        <option value='國立臺灣科技大學'>國立臺灣科技大學</option>
+                        <option value='國立雲林科技大學'>國立雲林科技大學</option>
+                        <option value='國立屏東科技大學'>國立屏東科技大學</option>
+                        <option value='國立臺北科技大學'>國立臺北科技大學</option>
+                        <option value='國立臺北藝術大學'>國立臺北藝術大學</option>
+                        <option value='國立臺灣藝術大學'>國立臺灣藝術大學</option>
+                        <option value='國立臺東大學'>國立臺東大學</option>
+                        <option value='國立宜蘭大學'>國立宜蘭大學</option>
+                        <option value='國立聯合大學'>國立聯合大學</option>
+                        <option value='國立虎尾科技大學'>國立虎尾科技大學</option>
+                        <option value='國立臺南藝術大學'>國立臺南藝術大學</option>
+                        <option value='國立臺南大學'>國立臺南大學</option>
+                        <option value='國立臺北教育大學'>國立臺北教育大學</option>
+                        <option value='國立臺中教育大學'>國立臺中教育大學</option>
+                        <option value='國立澎湖科技大學'>國立澎湖科技大學</option>
+                        <option value='國立勤益科技大學'>國立勤益科技大學</option>
+                        <option value='國立體育大學'>國立體育大學</option>
+                        <option value='國立臺北護理健康大學'>國立臺北護理健康大學</option>
+                        <option value='國立高雄餐旅大學'>國立高雄餐旅大學</option>
+                        <option value='國立金門大學'>國立金門大學</option>
+                        <option value='國立臺灣體育運動大學'>國立臺灣體育運動大學</option>
+                        <option value='國立臺中科技大學'>國立臺中科技大學</option>
+                        <option value='國立臺北商業大學'>國立臺北商業大學</option>
+                        <option value='國立屏東大學'>國立屏東大學</option>
+                        <option value='國立高雄科技大學'>國立高雄科技大學</option>
+                        <option value='國立臺灣戲曲學院'>國立臺灣戲曲學院</option>
+                        <option value='國立臺南護理專科學校'>國立臺南護理專科學校</option>
+                        <option value='國立臺東專科學校'>國立臺東專科學校</option>
+                        <option value='國立空中大學'>國立空中大學</option>
+                        <option value='東海大學'>東海大學</option>
+                        <option value='輔仁大學'>輔仁大學</option>
+                        <option value='東吳大學'>東吳大學</option>
+                        <option value='中原大學'>中原大學</option>
+                        <option value='淡江大學'>淡江大學</option>
+                        <option value='中國文化大學'>中國文化大學</option>
+                        <option value='逢甲大學'>逢甲大學</option>
+                        <option value='靜宜大學'>靜宜大學</option>
+                        <option value='長庚大學'>長庚大學</option>
+                        <option value='元智大學'>元智大學</option>
+                        <option value='中華大學'>中華大學</option>
+                        <option value='大葉大學'>大葉大學</option>
+                        <option value='華梵大學'>華梵大學</option>
+                        <option value='義守大學'>義守大學</option>
+                        <option value='世新大學'>世新大學</option>
+                        <option value='銘傳大學'>銘傳大學</option>
+                        <option value='實踐大學'>實踐大學</option>
+                        <option value='朝陽科技大學'>朝陽科技大學</option>
+                        <option value='高雄醫學大學'>高雄醫學大學</option>
+                        <option value='南華大學'>南華大學</option>
+                        <option value='真理大學'>真理大學</option>
+                        <option value='大同大學'>大同大學</option>
+                        <option value='南臺學校財團法人南臺科技大學'>南臺學校財團法人南臺科技大學</option>
+                        <option value='崑山科技大學'>崑山科技大學</option>
+                        <option value='嘉藥學校財團法人嘉南藥理大學'>嘉藥學校財團法人嘉南藥理大學</option>
+                        <option value='樹德科技大學'>樹德科技大學</option>
+                        <option value='慈濟學校財團法人慈濟大學'>慈濟學校財團法人慈濟大學</option>
+                        <option value='臺北醫學大學'>臺北醫學大學</option>
+                        <option value='中山醫學大學'>中山醫學大學</option>
+                        <option value='龍華科技大學'>龍華科技大學</option>
+                        <option value='輔英科技大學'>輔英科技大學</option>
+                        <option value='明新科技大學'>明新科技大學</option>
+                        <option value='長榮大學'>長榮大學</option>
+                        <option value='弘光科技大學'>弘光科技大學</option>
+                        <option value='中國醫藥大學'>中國醫藥大學</option>
+                        <option value='健行學校財團法人健行科技大學'>健行學校財團法人健行科技大學</option>
+                        <option value='正修學校財團法人正修科技大學'>正修學校財團法人正修科技大學</option>
+                        <option value='萬能學校財團法人萬能科技大學'>萬能學校財團法人萬能科技大學</option>
+                        <option value='玄奘大學'>玄奘大學</option>
+                        <option value='建國科技大學'>建國科技大學</option>
+                        <option value='明志科技大學'>明志科技大學</option>
+                        <option value='高苑科技大學'>高苑科技大學</option>
+                        <option value='大仁科技大學'>大仁科技大學</option>
+                        <option value='聖約翰科技大學'>聖約翰科技大學</option>
+                        <option value='嶺東科技大學'>嶺東科技大學</option>
+                        <option value='中國科技大學'>中國科技大學</option>
+                        <option value='中臺科技大學'>中臺科技大學</option>
+                        <option value='亞洲大學'>亞洲大學</option>
+                        <option value='開南大學'>開南大學</option>
+                        <option value='佛光大學'>佛光大學</option>
+                        <option value='台南家專學校財團法人台南應用科技大學'>台南家專學校財團法人台南應用科技大學</option>
+                        <option value='遠東科技大學'>遠東科技大學</option>
+                        <option value='光宇學校財團法人元培醫事科技大學'>光宇學校財團法人元培醫事科技大學</option>
+                        <option value='景文科技大學'>景文科技大學</option>
+                        <option value='中華醫事科技大學'>中華醫事科技大學</option>
+                        <option value='東南科技大學'>東南科技大學</option>
+                        <option value='德明財經科技大學'>德明財經科技大學</option>
+                        <option value='明道學校財團法人明道大學'>明道學校財團法人明道大學</option>
+                        <option value='南開科技大學'>南開科技大學</option>
+                        <option value='中華學校財團法人中華科技大學'>中華學校財團法人中華科技大學</option>
+                        <option value='僑光科技大學'>僑光科技大學</option>
+                        <option value='廣亞學校財團法人育達科技大學'>廣亞學校財團法人育達科技大學</option>
+                        <option value='美和學校財團法人美和科技大學'>美和學校財團法人美和科技大學</option>
+                        <option value='吳鳳科技大學'>吳鳳科技大學</option>
+                        <option value='環球學校財團法人環球科技大學'>環球學校財團法人環球科技大學</option>
+                        <option value='台灣首府學校財團法人台灣首府大學'>台灣首府學校財團法人台灣首府大學</option>
+                        <option value='中州學校財團法人中州科技大學'>中州學校財團法人中州科技大學</option>
+                        <option value='修平學校財團法人修平科技大學'>修平學校財團法人修平科技大學</option>
+                        <option value='長庚學校財團法人長庚科技大學'>長庚學校財團法人長庚科技大學</option>
+                        <option value='城市學校財團法人臺北城市科技大學'>城市學校財團法人臺北城市科技大學</option>
+                        <option value='大華學校財團法人大華科技大學'>大華學校財團法人大華科技大學</option>
+                        <option value='醒吾學校財團法人醒吾科技大學'>醒吾學校財團法人醒吾科技大學</option>
+                        <option value='南榮學校財團法人南榮科技大學'>南榮學校財團法人南榮科技大學</option>
+                        <option value='文藻學校財團法人文藻外語大學'>文藻學校財團法人文藻外語大學</option>
+                        <option value='華夏學校財團法人華夏科技大學'>華夏學校財團法人華夏科技大學</option>
+                        <option value='慈濟學校財團法人慈濟科技大學'>慈濟學校財團法人慈濟科技大學</option>
+                        <option value='致理學校財團法人致理科技大學'>致理學校財團法人致理科技大學</option>
+                        <option value='康寧學校財團法人康寧大學'>康寧學校財團法人康寧大學</option>
+                        <option value='宏國學校財團法人宏國德霖科技大學'>宏國學校財團法人宏國德霖科技大學</option>
+                        <option value='東方學校財團法人東方設計大學'>東方學校財團法人東方設計大學</option>
+                        <option value='崇右學校財團法人崇右影藝科技大學'>崇右學校財團法人崇右影藝科技大學</option>
+                        <option value='台北海洋學校財團法人台北海洋科技大學'>台北海洋學校財團法人台北海洋科技大學</option>
+                        <option value='中信金融管理學院'>中信金融管理學院</option>
+                        <option value='大漢技術學院'>大漢技術學院</option>
+                        <option value='和春技術學院'>和春技術學院</option>
+                        <option value='亞東技術學院'>亞東技術學院</option>
+                        <option value='南亞科技學校財團法人南亞技術學院'>南亞科技學校財團法人南亞技術學院</option>
+                        <option value='稻江科技暨管理學院'>稻江科技暨管理學院</option>
+                        <option value='蘭陽技術學院'>蘭陽技術學院</option>
+                        <option value='黎明技術學院'>黎明技術學院</option>
+                        <option value='經國管理暨健康學院'>經國管理暨健康學院</option>
+                        <option value='大同技術學院'>大同技術學院</option>
+                        <option value='臺灣觀光學院'>臺灣觀光學院</option>
+                        <option value='馬偕學校財團法人馬偕醫學院'>馬偕學校財團法人馬偕醫學院</option>
+                        <option value='法鼓學校財團法人法鼓文理學院'>法鼓學校財團法人法鼓文理學院</option>
+                        <option value='馬偕學校財團法人馬偕醫護管理專科學校'>馬偕學校財團法人馬偕醫護管理專科學校</option>
+                        <option value='仁德醫護管理專科學校'>仁德醫護管理專科學校</option>
+                        <option value='樹人醫護管理專科學校'>樹人醫護管理專科學校</option>
+                        <option value='慈惠醫護管理專科學校'>慈惠醫護管理專科學校</option>
+                        <option value='耕莘健康管理專科學校'>耕莘健康管理專科學校</option>
+                        <option value='敏惠醫護管理專科學校'>敏惠醫護管理專科學校</option>
+                        <option value='育英醫護管理專科學校'>育英醫護管理專科學校</option>
+                        <option value='崇仁醫護管理專科學校'>崇仁醫護管理專科學校</option>
+                        <option value='聖母醫護管理專科學校'>聖母醫護管理專科學校</option>
+                        <option value='新生醫護管理專科學校'>新生醫護管理專科學校</option>
+                        <option value='學校財團法人中華浸信會基督教台灣浸會神學院'>學校財團法人中華浸信會基督教台灣浸會神學院</option>
+                        <option value='臺北基督學院'>臺北基督學院</option>
+                        <option value='財團法人一貫道天皇基金會一貫道天皇學院'>財團法人一貫道天皇基金會一貫道天皇學院</option>
+                        <option value='台神學校財團法人台灣神學研究學院'>台神學校財團法人台灣神學研究學院</option>
+                        <option value='一貫道崇德學院'>一貫道崇德學院</option>
+                        <option value='台灣基督長老教會南神神學院'>台灣基督長老教會南神神學院</option>
+                        <option value='臺北市立大學'>臺北市立大學</option>
+                        <option value='高雄市立空中大學'>高雄市立空中大學</option>
+                    </select>
+                    <br />
+                </div>
+                <div>
+                    <label>科目</label>
+                    <button type="button" class="btn btn-link" onclick="Clear('subject')">清除條件</button>
+                    <br />
+                    <button type="button" id="國文" class="btn btn-outline-primary subject_class" onclick="SearchMenu_button_Event('國文','subject')">國文</button>
+                    <button type="button" id="英文" class="btn btn-outline-primary subject_class" onclick="SearchMenu_button_Event('英文','subject')">英文</button>
+                    <button type="button" id="數學" class="btn btn-outline-primary subject_class" onclick="SearchMenu_button_Event('數學','subject')">數學</button>
+                    <button type="button" id="自然" class="btn btn-outline-primary subject_class" onclick="SearchMenu_button_Event('自然','subject')">自然</button>
+                    <button type="button" id="社會" class="btn btn-outline-primary subject_class" onclick="SearchMenu_button_Event('社會','subject')">社會</button>
+                    <button type="button" id="全科" class="btn btn-outline-primary subject_class" onclick="SearchMenu_button_Event('全科','subject')">全科</button>
+                    <button type="button" id="其他" class="btn btn-outline-primary subject_class" onclick="SearchMenu_button_Event('其他','subject')">其他</button>
+                </div>
+                
+                
+                <div>
+                    <label>性別</label>
+                    <button type="button" class="btn btn-link" onclick="Clear('gender')">清除條件</button>
+                    <br />
+                    <button type="button" id="男" class="btn btn-outline-primary gender_class" onclick="SearchMenu_button_Event('男','gender')">男</button>
+                    <button type="button" id="女" class="btn btn-outline-primary gender_class" onclick="SearchMenu_button_Event('女','gender')">女</button>
+                    <br />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="Clear('ALL')">清除所有條件</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="indexFormSubmit()">確認</button>
+            </div>
+            <form id="indexForm" action="@Url.Action("Index", "Parents")" method="post">
+                <input type="hidden" id="subject" name="subject" value="" />
+                <input type="hidden" id="school" name="school" value="" />
+                <input type="hidden" id="gender" name="gender" value="" />
+            </form>
+        </div>
+    </div>
+</div>
+@foreach (New_Tutor.Models.Parents_QuestionnaireData item in Model.ParentsIndexList)
+{
+ 
+      <div class="col-md-6">
+          <div class="case">
+              
+                  <div class="nameText col-md-9 position" >@item.name</div>
+                  <div class="genderText col-md-3 position">@item.gender<!---->老師 </div>
+             
+                  <div class="schoolText" >@item.school &nbsp @item.department</div>
+
+                  <div class="subjectTitle border">科目</div>     
+                  <div class="subjectText border">@item.subject</div>
+                <div class="more"><a href="@Url.Action("Detail", "Parents", new { ID = item.tutor_id })">了解更多</a></div>
+            </div>
+        </div>
+         
+      
+}
+
+<style>
+     .case { 
+  padding-top:10px; 
+  padding-left:10px; 
+  padding-right:10px; 
+  padding-bottom:10px; 
+ 
+}
+  .position{ 
+ 
+  font-size:25px;
+  display:inline;
+  
+  
+} 
+  .schoolText{
+       font-size:15px;
+       padding-left:15px; 
+       padding-bottom:40px; 
+  }
+  .border{
+      font-size:15px;
+      padding-left:15px;
+  }
+  .more{
+      padding-bottom:30px;
+  }
+ 
+ 
+</style>

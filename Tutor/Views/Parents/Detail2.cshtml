@@ -1,0 +1,170 @@
+﻿@model New_Tutor.Models.ViewModel.ParentsDetail
+@{
+    ViewData["Title"] = "Detail";
+}
+<head>
+    @*<link href="~/Content/caseDetail.css" rel="stylesheet" />*@
+</head>
+<div class="caseTitle">老師資訊</div>
+<div class="caseDetail">
+    <div class="name divborder">
+        <div class="title">老師姓名</div>
+        <div class="Detail">@Model.ParentsIndexDetail.name</div>
+    </div>
+    <div class="gender divborder">
+        <div class="title">老師性別</div>
+        <div class="Detail">@Model.ParentsIndexDetail.gender</div>
+    </div>
+
+    <div class="subject divborder">
+        <div class="title">教學科目</div>
+        <div class="Detail">@Model.ParentsIndexDetail.subject</div>
+    </div>
+    <div class="school divborder">
+        <div class="title">最高學歷</div>
+        <div class="Detail">@Model.ParentsIndexDetail.school &nbsp @Model.ParentsIndexDetail.department</div>
+    </div>
+    <div class="sub_department divborder">
+        <div class="title">雙主修/輔系</div>
+        <div class="Detail">@Model.ParentsIndexDetail.sub_department</div>
+    </div>
+    <div class="introduction divborder">
+        <div class="title">自我介紹</div>
+        <div class="Detail">@Model.ParentsIndexDetail.introduction</div>
+    </div>
+    <div class="motivation ">
+        <div class="title">教學動機</div>
+        <div class="Detail">@Model.ParentsIndexDetail.motivation</div>
+    </div>
+
+</div>
+<div class="connectionTitle">聯絡方式</div>
+    <div class="connectionDetail ">
+        <div class="phone ">
+            <div class="title">電話</div>
+            <div class="Detail">@Model.ParentsIndexDetail.telephone</div>
+        </div>
+        @*<div class="email divborder">
+            <div class="title">電子信箱</div>
+            <div class="Detail">@Model.ParentsIndexDetail.googleaccount</div>
+        </div>*@
+    </div>
+
+<div class="connectionTitle">聯絡結果回饋</div>
+<textarea  style="width:90%;height:200px;resize:none"></textarea>
+<br />
+<button class="button" style="left:45%">送出</button>
+
+
+@*<div class="row">
+    <div class="col-md-5"></div>
+    <div class="col-md-2">
+        <form action="@Url.Action("Detail", "Parents")">
+            <button type="submit">返回明細</button>
+        </form>
+    </div>
+    <div class="col-md-5"></div>
+</div>*@
+
+<style>
+        * {
+            position: relative;
+            font-family: Microsoft JhengHei;
+        }
+
+        body, html {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .caseTitle {
+            height: 33px;
+            width: 30%;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            line-height: 1.5;
+            letter-spacing: 0.6px;
+            color: #343434;
+            margin-left: 10%;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            display: inline-block;
+            margin-top: 70px;
+        }
+
+        .caseDetail {
+            min-height:100px;
+            opacity: 0.93;
+            border-radius: 10px;
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.16);
+            background-color: #ffffff;
+            margin-left: 5%;
+            margin-right: 5%;
+            font-weight: bold;
+        }
+
+        .divborder {
+            border-bottom: 1px solid #707070;
+        }
+
+
+        .title {
+            width: 25%;
+            height: 24px;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.5;
+            letter-spacing: 0.4px;
+            color: #005fac;
+            margin-left: 5%;
+            margin-top: 14px;
+            margin-bottom: 14px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .Detail {
+            width: 65%;
+            height: 27px;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.5;
+            letter-spacing: 0.5px;
+            color: #343434;
+            text-align: center;
+            display: inline-block;
+        }
+        .connectionTitle {
+        height: 33px;
+        width: 30%;
+        text-align: center;
+        font-size: 22px;
+        font-weight: bold;
+        line-height: 1.5;
+        letter-spacing: 0.6px;
+        color: #343434;
+        margin-top: 10px;
+        margin-left: 10%;
+        margin-bottom: 10px;
+        display: inline-block;
+    }
+
+    .connectionDetail {
+        min-height: 52px;
+        opacity: 0.93;
+        border-radius: 10px;
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.16);
+        background-color: #ffffff;
+        margin-top: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    textarea{
+ 
+        margin-top: 5%;
+        margin-left: 5%;
+       
+    }
+       
+</style>

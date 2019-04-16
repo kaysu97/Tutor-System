@@ -1,0 +1,124 @@
+﻿@model New_Tutor.Models.ViewModel.HomeIndex
+@{
+    ViewBag.Title = "Home Page";
+}
+<style>
+
+
+    .subject_class {
+        border-color: #F5AC00;
+        background-color: rgb(221,221,221);
+    }
+    .grade_class {
+        border-color: #F5AC00;
+        background-color: rgb(221,221,221);
+    }
+    .Salary_class {
+        border-color: #F5AC00;
+        background-color: rgb(221,221,221);
+    }
+    .gender_class {
+        border-color: #F5AC00;
+        background-color: rgb(221,221,221);
+    }
+</style>
+<script>
+    function indexFormSubmit() {
+        document.getElementById("indexForm").submit();
+    }
+</script>
+<head>
+    <link href="~/Content/filter.css" rel="stylesheet" />
+    <link href="~/Content/detail.css" rel="stylesheet" />
+</head>
+<!-- Button trigger modal -->
+<button id="filterButton" class="filter" data-toggle="modal" data-target="#filterModal" style="z-index: 2;">
+    <h2>
+        篩選條件<svg xmlns="http://www.w3.org/2000/svg" width="12" height="15" viewBox="0 0 12 7.41"><path id="ic_chevron_right_24px" d="M10,6,8.59,7.41,13.17,12,8.59,16.59,10,18l6-6Z" transform="translate(18 -6.5) rotate(90)" fill="#707070" /></svg>
+    </h2>
+</button>
+<!-- Modal -->
+<div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">篩選條件</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <label>科目</label>
+                    <button type="button" class="btn btn-link" onclick="Clear('subject')">清除條件</button>
+                    <br />
+                    <button type="button" id="國文" class="btn btn-outline-primary subject_class" onclick="SearchMenu_button_Event('國文','subject')">國文</button>
+                    <button type="button" id="英文" class="btn btn-outline-primary subject_class" onclick="SearchMenu_button_Event('英文','subject')">英文</button>
+                    <button type="button" id="數學" class="btn btn-outline-primary subject_class" onclick="SearchMenu_button_Event('數學','subject')">數學</button>
+                    <button type="button" id="自然" class="btn btn-outline-primary subject_class" onclick="SearchMenu_button_Event('自然','subject')">自然</button>
+                    <button type="button" id="社會" class="btn btn-outline-primary subject_class" onclick="SearchMenu_button_Event('社會','subject')">社會</button>
+                    <button type="button" id="全科" class="btn btn-outline-primary subject_class" onclick="SearchMenu_button_Event('全科','subject')">全科</button>
+                    <button type="button" id="其他" class="btn btn-outline-primary subject_class" onclick="SearchMenu_button_Event('其他','subject')">其他</button>
+                </div>
+                <div>
+                    <label>年級</label>
+                    <button type="button" class="btn btn-link" onclick="Clear('grade')">清除條件</button>
+                    <br />
+                    <button type="button" id="學齡前" class="btn btn-outline-primary grade_class" onclick="SearchMenu_button_Event('學齡前','grade')">學齡前</button>
+                    <button type="button" id="國小" class="btn btn-outline-primary grade_class" onclick="SearchMenu_button_Event('國小','grade')">國小</button>
+                    <button type="button" id="國中" class="btn btn-outline-primary grade_class" onclick="SearchMenu_button_Event('國中','grade')">國中</button>
+                    <button type="button" id="高中" class="btn btn-outline-primary grade_class" onclick="SearchMenu_button_Event('高中','grade')">高中</button>
+                    <button type="button" id="成人" class="btn btn-outline-primary grade_class" onclick="SearchMenu_button_Event('成人','grade')">成人</button>
+                    <br />
+                </div>
+                @*<div> 目前查詢DB有困難
+                        <label>薪資</label>
+                        <button type="button" class="btn btn-link" onclick="Clear('Salary')">清除條件</button>
+                        <br />
+                        <button type="button" id="Down" class="btn btn-outline-primary Salary_class" onclick="SearchMenu_button_Event('Down','Salary')">300以下</button>
+                        <button type="button" id="Middle" class="btn btn-outline-primary Salary_class" onclick="SearchMenu_button_Event('Middle','Salary')">300~500</button>
+                        <button type="button" id="UP" class="btn btn-outline-primary Salary_class" onclick="SearchMenu_button_Event('UP','Salary')">500以上</button>
+                        <br />
+                    </div>*@
+                <div>
+                    <label>性別</label>
+                    <button type="button" class="btn btn-link" onclick="Clear('gender')">清除條件</button>
+                    <br />
+                    <button type="button" id="男" class="btn btn-outline-primary gender_class" onclick="SearchMenu_button_Event('男','gender')">男</button>
+                    <button type="button" id="女" class="btn btn-outline-primary gender_class" onclick="SearchMenu_button_Event('女','gender')">女</button>
+                    <br />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="Clear('ALL')">清除所有條件</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="indexFormSubmit()">確認</button>
+            </div>
+            <form id="indexForm" action="@Url.Action("Index", "Home")" method="post">
+                <input type="hidden" id="subject" name="subject" value="" />
+                <input type="hidden" id="grade" name="grade" value="" />
+                <input type="hidden" id="Salary" name="Salary" value="" />
+                <input type="hidden" id="gender" name="gender" value="" />
+            </form>
+        </div>
+    </div>
+</div>
+@foreach (New_Tutor.Models.QuestionnaireData item in Model.QuestionnaireDatas)
+{
+    <div>
+        <div class="case">
+            <div class="subject">@item.subject</div>
+            <div class="pay">@item.budget</div>
+            <div class="title">
+                <div class="gradeTitle">年級</div>
+                <div class="areaTitle">地區</div>
+                <div class="genderTitle">老師性別</div>
+            </div>
+            <div class="text">
+                <div class="gradeText">@item.grade_Type@item.grade</div>
+                <div class="areaText">@item.Address</div>
+                <div class="genderText">@item.gender_Mamo</div>
+            </div>
+            <div class="more"><a href="@Url.Action("Detail", "Home", new { ID = item.Questionnaire_id })">了解更多</a></div>
+        </div>
+    </div>
+}

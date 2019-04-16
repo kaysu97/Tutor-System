@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/contentPage.css" rel="stylesheet" />
+    <link href="~/Content/manu.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="nav">
+        <div class="listIconSvg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32.688" height="25.086" viewBox="0 0 32.688 25.086">
+                <g id="Group_33" data-name="Group 33" transform="translate(-28 -21.712)">
+                    <rect id="Rectangle_2" data-name="Rectangle 2" width="32.688" height="4.241" rx="2.121" transform="translate(28 21.712)" fill="#fff" />
+                    <rect id="Rectangle_3" data-name="Rectangle 3" width="32.688" height="4.241" rx="2.121" transform="translate(28 32.134)" fill="#fff" />
+                    <rect id="Rectangle_4" data-name="Rectangle 4" width="32.688" height="4.241" rx="2.121" transform="translate(28 42.557)" fill="#fff" />
+                </g>
+            </svg>
+        </div>
+        <div class="space"></div>
+        <div class="logo">教育gogogo</div>
+    </div>
+    <div class="listIconClick">
+        <div class="text">教育gogogo</div>
+        <a href="@Url.Action("Index", "Home",new { act = "View"})" class="text">瀏覽案件</a>
+        @*<a class="text">瀏覽紀錄</a>*@
+        @*<a class="text">討論社群</div>*@
+        <a href="@Url.Action("RegisterView", "Home",new { act = "View"})" class="text">個人資料</a>
+        @*<a class="text">設定</a>*@
+    </div>
+    <div class="listIconClickBody"></div>
+
+    @*<div id="indexMenu" class="navbar-fixed-top dropdown">
+            <label style="color:white; font-size:3rem; padding-left:1rem; float:left">師大家教社</label>
+            <button class="btn dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:cornflowerblue; float:right; margin-right:1rem;"><img src="~/images/menu.svg.png" style="height:3rem; width:3rem;" /></button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <ul class="list-group" style="background-color:cornflowerblue; font-size:2rem;">
+                    <li class="list-group-item active vertical"><a asp-area="" asp-controller="Home" asp-action="Index">瀏覽案件</a></li>
+                    <li class="list-group-item active vertical"><a asp-area="" asp-controller="Home" asp-action="About">瀏覽紀錄</a></li>
+                    <li class="list-group-item active vertical"><a asp-area="" asp-controller="Home" asp-action="Contact">討論社群</a></li>
+                    <li class="list-group-item active vertical"><a href="@Url.Action("RegisterView", "Home",new { act = "View"})">個人資料</a></li>
+                    <li class="list-group-item active vertical"><a asp-area="" asp-controller="Home" asp-action="Ucbcaselist">設定</a></li>
+                </ul>
+            </div>
+        </div>*@
+
+    <partial name="_CookieConsentPartial" />
+    <div class="container body-content">
+        @RenderBody()
+
+        @*<hr /> 目前用不到
+            <footer>
+                <p>&copy; 2019 - Tutor</p>
+            </footer>*@
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/customize/Site.js"></script>
+    <script src="~/Scripts/customize/manu.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
